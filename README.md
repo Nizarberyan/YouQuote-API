@@ -1,179 +1,66 @@
-# YouQuote API Project - Step-by-Step Guide
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-## Phase 1: Setup and Planning (Day 1 - Morning)
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-1. **Set up development environment:**
-    - Install PHP, Composer, and Laravel
-    - Set up a local database (MySQL or PostgreSQL)
-    - Configure your IDE (VS Code, PHPStorm, etc.)
-    - Initialize Git repository
-2. **Create a new Laravel project:**
-    
-    ```bash
-    composer create-project laravel/laravel youquote-api
-    cd youquote-api
-    
-    ```
-    
-3. **Plan the database schema:**
-    - Design the Quote model (id, content, author, length, popularity_count, etc.)
-    - If implementing authentication: Design User model and relationships
-    - Create UML diagrams for your database schema
+## About Laravel
 
-## Phase 2: Database Implementation (Day 1 - Afternoon)
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-1. **Create migrations:**
-    
-    ```bash
-    php artisan make:migration create_quotes_table
-    
-    ```
-    
-    - Define the schema for quotes table in the migration file
-2. **Create models:**
-    
-    ```bash
-    php artisan make:model Quote
-    
-    ```
-    
-    - Define relationships and properties
-3. **Create seeders and factories:**
-    
-    ```bash
-    php artisan make:seeder QuoteSeeder
-    php artisan make:factory QuoteFactory
-    
-    ```
-    
-    - Implement factory logic to generate sample quotes
-    - Use seeders to populate the database with initial data
-4. **Run migrations and seeders:**
-    
-    ```bash
-    php artisan migrate
-    php artisan db:seed
-    
-    ```
-    
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-## Phase 3: Core API Implementation (Day 2)
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-1. **Create controllers:**
-    
-    ```bash
-    php artisan make:controller QuoteController --api
-    
-    ```
-    
-2. **Implement CRUD operations:**
-    - Create (POST /quotes)
-    - Read (GET /quotes, GET /quotes/{id})
-    - Update (PUT /quotes/{id})
-    - Delete (DELETE /quotes/{id})
-3. **Implement request validation:**
-    
-    ```bash
-    php artisan make:request StoreQuoteRequest
-    php artisan make:request UpdateQuoteRequest
-    
-    ```
-    
-    - Define validation rules for input data
-4. **Implement random quotes functionality:**
-    - Add method to controller for getting random quotes
-    - Create route (GET /quotes/random?count=1)
-5. **Implement quote filtering by length:**
-    - Add filtering functionality to the controller
-    - Create route (GET /quotes?min_length=10&max_length=50)
-6. **Implement quote popularity tracking:**
-    - Add middleware or controller logic to track quote requests
-    - Create route for getting popular quotes (GET /quotes/popular)
+## Learning Laravel
 
-## Phase 4: Testing (Day 3)
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-1. **Create API tests:**
-    
-    ```bash
-    php artisan make:test QuoteApiTest
-    
-    ```
-    
-    - Test CRUD operations
-    - Test random quotes functionality
-    - Test filtering functionality
-    - Test popularity tracking
-2. **Run tests and fix issues:**
-    
-    ```bash
-    php artisan test
-    
-    ```
-    
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-## Phase 5: Bonus Features (Day 4)
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-1. **Implement authentication (optional):**
-    
-    ```bash
-    php artisan make:controller AuthController
-    
-    ```
-    
-    - Set up JWT for authentication
-    - Create routes for registration, login, and logout
-    - Secure routes with auth middleware
-2. **Implement quote image generation:**
-    - Install Intervention Image library:
-    
-    ```bash
-    composer require intervention/image
-    
-    ```
-    
-    - Create controller/service for image generation
-    - Create route for generating images (GET /quotes/{id}/image)
+## Laravel Sponsors
 
-## Phase 6: Documentation and Finalization (Day 5)
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-1. **Create API documentation:**
-    - Document all endpoints, parameters, and responses
-    - Use tools like Swagger/OpenAPI or create a Markdown file
-2. **Finalize GitHub repository:**
-    - Ensure code follows best practices (PSR standards)
-    - Add README.md with project overview and setup instructions
-    - Review and refactor code as needed
-3. **Prepare for deployment:**
-    - Configure environment variables
-    - Set up production database
-    - Configure web server (Nginx/Apache)
-4. **Deploy to cloud service:**
-    - Set up server on AWS EC2, Azure VM, or DigitalOcean
-    - Deploy Laravel application
-    - Configure HTTPS
-5. **Prepare for presentation:**
-    - Test all functionality in production environment
-    - Prepare demonstration scenarios
-    - Practice code review explanation
-    - Practice role-playing presentation (in French)
+### Premium Partners
 
-## Detailed API Endpoints
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-1. **Quotes Management:**
-    - `GET /api/quotes`: Get all quotes
-    - `GET /api/quotes/{id}`: Get a specific quote
-    - `POST /api/quotes`: Create a new quote
-    - `PUT /api/quotes/{id}`: Update a quote
-    - `DELETE /api/quotes/{id}`: Delete a quote
-2. **Random Quotes:**
-    - `GET /api/quotes/random?count=5`: Get 5 random quotes
-3. **Quote Filtering:**
-    - `GET /api/quotes?min_length=10&max_length=50`: Get quotes with 10-50 words
-4. **Popular Quotes:**
-    - `GET /api/quotes/popular`: Get the most requested quotes
-5. **Authentication (Bonus):**
-    - `POST /api/register`: Register a new user
-    - `POST /api/login`: Log in a user
-    - `POST /api/logout`: Log out a user
-6. **Image Generation (Bonus):**
-    - `GET /api/quotes/{id}/image`: Generate image for a quote
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
